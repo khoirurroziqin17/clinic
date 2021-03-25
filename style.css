@@ -821,11 +821,14 @@ nav{
     color: var(--white-color);
 }
 .copyright{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 3rem;
-    text-align: center;
-}
-.copyright-text{
     font-size: .85rem;
+}
+.copyright-link:hover{
+    color: var(--blue-color);
 }
 
 /* ===== Media Queri ===== */
