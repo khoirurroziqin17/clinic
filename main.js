@@ -1,3 +1,54 @@
+/*==================== SHOW MENU ====================*/
+const showMenu = (menuId, toggleId) => {
+    const menu = document.getElementById(menuId),
+        toggle = document.getElementById(toggleId)
+
+    if (menu && toggle) {
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('show-menu')
+        })
+    }
+}
+showMenu('menu', 'nav-toggle')
+
+/*==================== REMOVE MENU MOBILE ====================*/
+const navLink = document.querySelectorAll('.menu-link')
+
+function linkAction() {
+    const navMenu = document.getElementById('menu')
+    // When we click on each nav__link, we remove the show-menu class
+    navMenu.classList.remove('show-menu')
+}
+navLink.forEach(n => n.addEventListener('click', linkAction))
+
+/*==================== CHANGE BACKGROUND HEADER ====================*/
+function scrollHeader() {
+    const header = document.getElementById('header')
+    // When the scroll is greater than 200 viewport height, add the scroll-header class to the header tag
+    if (this.scrollY >= 100) header.classList.add('scroll-header'); else header.classList.remove('scroll-header')
+}
+window.addEventListener('scroll', scrollHeader)
+
+/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
+const sections = document.querySelectorAll('section[id]')
+
+function scrollActive() {
+    const scrollY = window.pageYOffset
+
+    sections.forEach(current => {
+        const sectionHeight = current.offsetHeight
+        const sectionTop = current.offsetTop - 85;
+        sectionId = current.getAttribute('id')
+
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            document.querySelector('.menu a[href="#' + sectionId + '"]').classList.add('active-link')
+        } else {
+            document.querySelector('.menu a[href="#' + sectionId + '"]').classList.remove('active-link')
+        }
+    })
+}
+window.addEventListener('scroll', scrollActive)
+
 // ========== Initialize Swiper =============
 var swiper = new Swiper('.swiper-container', {
     spaceBetween: 10,
